@@ -208,7 +208,8 @@ h1#logo a {
 #main {
 	border-bottom:1px dashed #413e3e;
 }
-
+#content {
+}
 .box {
 	width:980px;
 	border-bottom:1px dashed #413e3e;
@@ -233,16 +234,10 @@ h1#logo a {
 	width:152px;
 	height:214px;
 	position:relative;
-	object-fit: contain;
-	
-}
-.movie-image :hover{
-	opacity: 0;
 }
 .movie-image img {
 	width:152px;
 	height:214px;
-	object-fit: contain;
 }
 .movie-image a {
 	float:left;
@@ -251,25 +246,19 @@ h1#logo a {
 	height:214px;
 	position:relative;
 	z-index:2;
-	object-fit: contain;
 }
-
 .play {
 	position:absolute;
 	top:0;
-	left:2px;
-	width:146px;
+	left:0;
+	width:152px;
 	height:214px;
-	background-image: url('images/image-hover.png');
-	background-size: contain;
-	
-	object-fit: contain;
-	
+	background:url('images/image-hover.png');
+	display:block;
+	z-index:5;
 	cursor:pointer;
-	
-	
+	display:none;
 }
-
 .movie span.name {
 	font-weight:bold;
 	color:#fff;
@@ -277,7 +266,6 @@ h1#logo a {
 	text-align:center;
 	padding-top:160px;
 	display:block;
-	object-fit: contain;
 }
 .box .last {
 	padding:0;
@@ -392,40 +380,3 @@ h1#logo a {
 #footer .rf {
 	float:right;
 }
-.modal {
-	display: none; /* Hidden by default */
-	position: fixed; /* Stay in place */
-	z-index: 1; /* Sit on top */
-	padding-top: 100px; /* Location of the box */
-	left: 0;
-	top: 0;
-	width: 100%; /* Full width */
-	height: 100%; /* Full height */
-	overflow: auto; /* Enable scroll if needed */
-	background-color: rgb(0,0,0); /* Fallback color */
-	background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  }
-  
-  /* Modal Content */
-  .modal-content {
-	background-color: #fefefe;
-	margin: auto;
-	padding: 20px;
-	border: 1px solid #888;
-	width: 80%;
-  }
-  
-  /* The Close Button */
-  .close {
-	color: #aaaaaa;
-	float: right;
-	font-size: 28px;
-	font-weight: bold;
-  }
-  
-  .close:hover,
-  .close:focus {
-	color: #000;
-	text-decoration: none;
-	cursor: pointer;
-  }

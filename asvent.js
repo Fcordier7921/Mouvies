@@ -1,5 +1,5 @@
 
-let Upcoming = ajaxGet("https://api.themoviedb.org/3/list/1?api_key=22a304eaf99b49c9b1427583f1654aba&languages=fr-fr");
+let Upcoming = ajaxGet("https://api.themoviedb.org/3/list/1?api_key=22a304eaf99b49c9b1427583f1654aba&languages=en-US");
 let AllMovies = Upcoming['items'];
 
 
@@ -48,19 +48,20 @@ let titleMovies;
 let poster_pathMovies;
 let movis;
 let id;
+let i;
 
-function affElement(AllMovies){
+function affElement(){
 
-for (let i = 0; i < AllMovies.length; i++) {
+for (i = 0; i < AllMovies.length; i++) {
 
     nuberMovies = AllMovies[i];
     id=nuberMovies.id;
-    titleMovies = nuberMovies.original_title;
+    titleMovies = nuberMovies.title;
     poster_pathMovies = nuberMovies.poster_path;
     movis = document.createElement('div');
     movis.className = "movie";
     movis.style = "widht: 100%; min-height: 30vh";
-    movis.innerHTML ='<div class="movie-image">  <a href="#" data-toggle="modal" data-target="#m" onclick="myFunction('+id+')"><img src="https://image.tmdb.org/t/p/w500' + poster_pathMovies + '" alt="" /></a> <span class="play"><span class="name">'+ titleMovies +'</span></span></div>';
+    movis.innerHTML ='<div class="movie-image ">  <a href="#" data-toggle="modal" data-target="#m" onclick="myFunction('+id+')"><img src="https://image.tmdb.org/t/p/w500' + poster_pathMovies + '" alt="" /></a> <span class="play"><span class="name">'+ titleMovies +'</span></span></div>';
     // console.log(movis);
 document.getElementById('movieGeneral').appendChild(movis);
 
@@ -76,19 +77,24 @@ var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks the button, open the modal 
 function myFunction(id) {
-    let Upcoming = ajaxGet("https://api.themoviedb.org/3/list/1?api_key=22a304eaf99b49c9b1427583f1654aba&languages=fr-fr");
-    let UpActor = ajaxGet('https://api.themoviedb.org/3/movie/'+id+'/credits?api_key=22a304eaf99b49c9b1427583f1654aba&languages=fr-FR');
-    let UpBandad = ajaxGet('https://api.themoviedb.org/3/movie/'+id+'/videos?api_key=22a304eaf99b49c9b1427583f1654aba&language=fr-FR');
-    let UpRecommendation = ajaxGet('https://api.themoviedb.org/3/movie/'+id+'/recommendations?api_key=22a304eaf99b49c9b1427583f1654aba&language=fr-FR&page=1');
+    modal.style.display = "block";
+    let UpActor = ajaxGet('https://api.themoviedb.org/3/movie/'+id+'/credits?api_key=22a304eaf99b49c9b1427583f1654aba&languages=en-US');//les acteur
+    let UpBandad = ajaxGet('https://api.themoviedb.org/3/movie/'+id+'/videos?api_key=22a304eaf99b49c9b1427583f1654aba&language=en-US');//band annoce
+    let UpRecommendation = ajaxGet('https://api.themoviedb.org/3/movie/'+id+'/recommendations?api_key=22a304eaf99b49c9b1427583f1654aba&language=en-US&page=1');//les recommandation du meme genre de film
+    let UpReviews = ajaxGet('https://api.themoviedb.org/3/movie/'+id+'/reviews?api_key=22a304eaf99b49c9b1427583f1654aba&language=en-US&page=1');
+    let Actor = UpActor['cast'];
+    let bandad= UpBandad['results'];
+    let Recommendation= UpRecommendation['results'];
+    let reviews=UpReviews['results'];
+    let originalLanguage=nuberMovies.original_language;
+    let originalTitle=nuberMovies.original_title;
+    let overviewMovies=nuberMovies.overview;
+    console.log(Actor);
+    console.log(Actor);
     
-    
-    console.log(UpActor);
-    console.log(UpBandad);
-    console.log(UpRecommendation);
-    console.log(Upcoming);
 
     
-  modal.style.display = "block";
+  
 }
 
 // When the user clicks on <span> (x), close the modal

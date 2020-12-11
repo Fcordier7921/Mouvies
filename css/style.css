@@ -37,6 +37,8 @@ body {
 	width: 70%!important;
 	z-index: 50;
 	height: auto;
+	overflow-y: scroll;
+	height: 90vh;
 	
   }
   

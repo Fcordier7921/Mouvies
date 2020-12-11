@@ -30,26 +30,7 @@ function ajaxGet(url) {
     return data;
 }
 
-// const mouviResquy= Array();
-// fetch("https://api.themoviedb.org/3/list/1?api_key=22a304eaf99b49c9b1427583f1654aba&languages=fr-fr")
-//     .then(res => {
 
-//         if (res.ok) {
-//             res.json().then(data => {
-//                  mouviResquy.push(data.items);
-//                 console.log(data.items);
-
-//             })
-//         } else {
-//             console.log("ERREUR");
-//             document.film.innerHTML = "Erreur :("
-//         }
-//     });
-//     function ajaxGet(url)
-// {
-
-
-// console.log(AllMovies)
 ;
 
 function affElement() {
@@ -80,7 +61,6 @@ function Modal() {
         Racine.append(modaldetails);
         modaldetails.id = "Moviedetail";
         modaldetails.classList = "modal faded";
-        modaldetails.tabindex = "-1";
         //Génération de la modal content
         var modalDialog = document.createElement("div");
         modaldetails.append(modalContent);
@@ -100,7 +80,7 @@ function Modal() {
         para.id = "modalContent";
     }
 }
-284053
+
 
 function myFunction(id) {
     return function () {
@@ -108,8 +88,8 @@ function myFunction(id) {
         let UpActor = ajaxGet('https://api.themoviedb.org/3/movie/' + id + '/credits?api_key=22a304eaf99b49c9b1427583f1654aba&languages=en-US'); //les acteur
         let UpBandad = ajaxGet('https://api.themoviedb.org/3/movie/' + id + '/videos?api_key=22a304eaf99b49c9b1427583f1654aba&language=en-US'); //band annoce
         let UpRecommendation = ajaxGet('https://api.themoviedb.org/3/movie/' + id + '/recommendations?api_key=22a304eaf99b49c9b1427583f1654aba&language=en-US&page=1'); //les recommandation du meme genre de film
-        var para = document.getElementById("modalContent");
         var modal = document.getElementById("Moviedetail");
+        var para = document.getElementById("modalContent");
         var span = document.getElementsByClassName("close")[0];
         modal.classList.toggle("show");
         modal.style.display = "block";
@@ -125,6 +105,7 @@ function myFunction(id) {
         var synopsis = document.createElement("div");
         synopsis.id = "synopsis";
         synopsis.style.display = "flex";
+        modaldetails.classList = "coll-3 col-md-6 col-lg-12";
         synopsis.innerHTML = '<img src="https://image.tmdb.org/t/p/w154/' + UpDetails.poster_path + '"><div class="px-3"><h2>' + UpDetails.title + '</h2><p class="text-dark">original language : ' + UpDetails.original_language + ' </p><br><p>' + UpDetails.overview + '</p></div><br>';
         para.append(synopsis);
 
@@ -132,7 +113,7 @@ function myFunction(id) {
         var h3Recommendation = document.createElement("h6");
         h3Recommendation.style.paddingTop = "20px";
         h3Recommendation.textContent = "Recommendation";
-        para.append(h3acteur);
+        para.append(h3Recommendation);
         var Recommends = document.createElement("div");
         Recommends.id = "movisRacommend"
         Recommends.style = "display:flex; justify-content: space-around";
@@ -175,23 +156,6 @@ function myFunction(id) {
             trailer.innerHTML = "";
 
         }
-        // création de la liste des acteurs principaux
-        var h3acteur = document.createElement("h3");
-        h3acteur.style.paddingTop = "20px";
-        h3acteur.textContent = "Actor";
-        para.append(h3acteur);
-        var actors = document.createElement("div");
-        actors.id = "actors"
-        actors.style = "display:flex; justify-content: space-around";
-        for (var i = 0; i < 5; i++) {
-            var actor = document.createElement("div");
-            actor.id = "actor" + i;
-            actor.classList = "mx-2"
-            actor.style = "text-align: center";
-            actor.innerHTML = '<img src="https://image.tmdb.org/t/p/w92/' + Actor[i].profile_path + '"><p>' + Actor[i].name + '</p>'
-            actors.append(actor);
-        }
-        para.append(actors);
         return false;
 
         
@@ -204,7 +168,7 @@ function myFunction(id) {
 var callBackGetSuccess = function (data) {
     console.log("donnees api", data)
     var element = document.getElementById('meteo');
-    element.innerHTML = "the temperature is " + data.main.temp + "°K<br> a wind of " + data.wind.speed + " km/h";
+    element.innerHTML = "In Paris the temperature is " + data.main.temp + "°K in Paris<br> a wind of " + data.wind.speed + " km/h";
 }
 
 function buttonClickGET() {

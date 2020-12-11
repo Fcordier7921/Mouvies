@@ -60,52 +60,52 @@ function affElement() {
         movis = document.createElement('div');
         movis.className = "movie";
         movis.style = "widht: 100%; min-height: 30vh";
-        movis.innerHTML = '<div class="movie-image ">  <a href="#" data-toggle="modal" data-target="#m" onclick="myFunction(' + id + ')"><img src="https://image.tmdb.org/t/p/w500' + poster_pathMovies + '" alt="" /></a> <span class="play"><span class="name">' + titleMovies + '</span></span></div>';
+        movis.innerHTML = '<div class="movie-image ">  <a href="#" data-toggle="modal" data-target="#m" ><img src="https://image.tmdb.org/t/p/w500' + poster_pathMovies + '" alt="" /></a> <span class="play"><span class="name">' + titleMovies + '</span></span></div>';
         // console.log(movis);
         document.getElementById('movieGeneral').appendChild(movis);
-
+        movis.onclick = myFunction(id);
     };
 
 }
 affElement(AllMovies);
 
-//Génération de la Modal
-function Modal() {
-    this.content = function () {
-        //Génération de la modal
-        var modal = document.createElement("div");
-        Racine.append(modal);
-        modal.id = "Moviedetail";
-        modal.classList = "modal fade bd-example-modal-lg";
-        modal.style.display = "block";
-        modal.tabindex = "-1";
-        //Génération de la modal content
-        var modalDialog = document.createElement("div");
-        modal.append(modalContent);
-        modalDialog.classList = "modal-dialog modal-lg";
-        //Génération de la modal content
-        var modalContent = document.createElement("div");
-        modalDialog.append(modalContent);
-        modalContent.classList = "modal-content";
-        var modalContent = document.createElement("div");
-        modalDialog.append(modalContent);
-        modalContent.classList = "modal-content";
-        //Génération du bouton close
-        var close = document.createElement("span");
-            modalContent.append(close);
-            close.classList = "close";
-            close.innerHTML = "&times;";
-        //Génération du titre de la Modal
-        var h1 = document.createElement("h2");
-        modalContent.append(h1);
-        h1.id = "titre";
-        //Génération de la div qui accueille la présentation du film
-        var para = document.createElement("div");
-            modalContent.append(para);
-            para.id = "modalContent";
+// //Génération de la Modal
+// function Modal() {
+//     this.content = function () {
+//         //Génération de la modal
+//         var modal = document.createElement("div");
+//         Racine.append(modal);
+//         modal.id = "Moviedetail";
+//         modal.classList = "modal fade bd-example-modal-lg";
+//         modal.style.display = "block";
+//         modal.tabindex = "-1";
+//         //Génération de la modal content
+//         var modalDialog = document.createElement("div");
+//         modal.append(modalContent);
+//         modalDialog.classList = "modal-dialog modal-lg";
+//         //Génération de la modal content
+//         var modalContent = document.createElement("div");
+//         modalDialog.append(modalContent);
+//         modalContent.classList = "modal-content";
+//         var modalContent = document.createElement("div");
+//         modalDialog.append(modalContent);
+//         modalContent.classList = "modal-content";
+//         //Génération du bouton close
+//         var close = document.createElement("span");
+//             modalContent.append(close);
+//             close.classList = "close";
+//             close.innerHTML = "&times;";
+//         //Génération du titre de la Modal
+//         var h1 = document.createElement("h2");
+//         modalContent.append(h1);
+//         h1.id = "titre";
+//         //Génération de la div qui accueille la présentation du film
+//         var para = document.createElement("div");
+//             modalContent.append(para);
+//             para.id = "modalContent";
         
 
-    }
+//     }
 
     function myFunction(id) {
         return function () {
@@ -114,23 +114,23 @@ function Modal() {
             let UpRecommendation = ajaxGet('https://api.themoviedb.org/3/movie/' + id + '/recommendations?api_key=22a304eaf99b49c9b1427583f1654aba&language=en-US&page=1'); //les recommandation du meme genre de film
             let UpReviews = ajaxGet('https://api.themoviedb.org/3/movie/' + id + '/reviews?api_key=22a304eaf99b49c9b1427583f1654aba&language=en-US&page=1'); //avis des utilisateur
 
-            var para = document.getElementById("myModal");
-            var modal = document.getElementById("Moviedetail");
-            var titre = document.getElementById("titre");
+            let para = document.getElementById("myModal");
+            let modal = document.getElementById("Moviedetail");
+            let titre = document.getElementById("titre");
 
             let Actor = UpActor['cast'];
             let bandad = UpBandad['results'];
             let Recommendation = UpRecommendation['results'];
             let reviews = UpReviews['results'];
             
-            var span = document.getElementsByClassName("close")[0];
+            let span = document.getElementsByClassName("close")[0];
             
             modal.classList.toggle("show");
             modal.style.zIndex = "1";
             para.innerHTML = "";
             titre.textContent = Moviedetails.title
             // création du synopsis : affiche + résumé + date de sortie
-            var synopsis = document.createElement("div");
+            let synopsis = document.createElement("div");
             synopsis.id = "synopsis";
             synopsis.style.display = "flex";
             synopsis.innerHTML = '<img src="https://image.tmdb.org/t/p/w154/' + Moviedetails.poster_path + '"><div class="px-3"><h3>Synopsis</h3><p>' + Moviedetails.overview + '</p><h3>Date de sortie</h3><p>' + Moviedetails.release_date + '</p></div>';

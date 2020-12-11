@@ -87,7 +87,23 @@ function Modal() {
         var modalContent = document.createElement("div");
         modalDialog.append(modalContent);
         modalContent.classList = "modal-content";
+        var modalContent = document.createElement("div");
+        modalDialog.append(modalContent);
+        modalContent.classList = "modal-content";
+        //Génération du bouton close
+        var close = document.createElement("span");
+            modalContent.append(close);
+            close.classList = "close";
+            close.innerHTML = "&times;";
+        //Génération du titre de la Modal
+        var h1 = document.createElement("h2");
+        modalContent.append(h1);
+        h1.id = "titre";
         //Génération de la div qui accueille la présentation du film
+        var para = document.createElement("div");
+            modalContent.append(para);
+            para.id = "modalContent";
+        
 
     }
 
@@ -98,13 +114,17 @@ function Modal() {
             let UpRecommendation = ajaxGet('https://api.themoviedb.org/3/movie/' + id + '/recommendations?api_key=22a304eaf99b49c9b1427583f1654aba&language=en-US&page=1'); //les recommandation du meme genre de film
             let UpReviews = ajaxGet('https://api.themoviedb.org/3/movie/' + id + '/reviews?api_key=22a304eaf99b49c9b1427583f1654aba&language=en-US&page=1'); //avis des utilisateur
 
-            var para = document.getElementById("myModal")
+            var para = document.getElementById("myModal");
+            var modal = document.getElementById("Moviedetail");
+            var titre = document.getElementById("titre");
+
             let Actor = UpActor['cast'];
             let bandad = UpBandad['results'];
-
-            var modal = document.getElementById("Moviedetail");
+            let Recommendation = UpRecommendation['results'];
+            let reviews = UpReviews['results'];
+            
             var span = document.getElementsByClassName("close")[0];
-            var titre = document.getElementById("titre");
+            
             modal.classList.toggle("show");
             modal.style.zIndex = "1";
             para.innerHTML = "";
@@ -172,7 +192,7 @@ function Modal() {
 
 
     
-    //     let Recommendation = UpRecommendation['results'];
+
     //     let reviews = UpReviews['results'];
     //     //les variable pour l'entaite de la modal
     //     let originalLanguage = nuberMovies.original_language;

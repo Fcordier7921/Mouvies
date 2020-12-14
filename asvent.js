@@ -161,7 +161,9 @@ function myFunction(id) {
         
     }
 }
-
+function search(){
+    let Upsearch = ajaxGet('https://api.themoviedb.org/3/search/movie?api_key=22a304eaf99b49c9b1427583f1654aba&language=fr-fr&query="  "&page=1&include_adult=false');
+}
 
 
 //météo

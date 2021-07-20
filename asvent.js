@@ -14,7 +14,7 @@ function ajaxGet(url) {
     var data;
     var req = new XMLHttpRequest();
     req.open("GET", url, false);
-    req.addEventListener("load", function () {
+    req.addEventListener("load", function() {
         if (req.status >= 200 && req.status < 400) {
             data = JSON.parse(req.responseText);
 
@@ -23,7 +23,7 @@ function ajaxGet(url) {
             console.error(req.status + " " + req.statusText + " " + url);
         }
     });
-    req.addEventListener("error", function () {
+    req.addEventListener("error", function() {
         console.error("Erreur réseau avec l'URL " + url);
     });
     req.send();
@@ -43,7 +43,6 @@ function affElement() {
         poster_pathMovies = nuberMovies.poster_path;
         movis = document.createElement('div');
         movis.className = "movie";
-        movis.style = "widht: 100%; min-height: 30vh";
         movis.innerHTML = '<div class="movie-image ">  <a href="#" data-toggle="modal" data-target="#m"><img src="https://image.tmdb.org/t/p/w500' + poster_pathMovies + '" alt=""/></a> <span class="play"><span class="name">' + titleMovies + '</span></span></div>';
         // console.log(movis);
         document.getElementById('movieGeneral').appendChild(movis);
@@ -55,7 +54,7 @@ affElement(AllMovies);
 
 //Génération de la Modal
 function Modal() {
-    this.content = function () {
+    this.content = function() {
         //Génération de la modal
         var modaldetails = document.createElement("div");
         Racine.append(modaldetails);
@@ -83,7 +82,7 @@ function Modal() {
 
 
 function myFunction(id) {
-    return function () {
+    return function() {
         let UpDetails = ajaxGet('https://api.themoviedb.org/3/movie/' + id + '?api_key=22a304eaf99b49c9b1427583f1654aba&language=en-US'); //le détail du film
         let UpActor = ajaxGet('https://api.themoviedb.org/3/movie/' + id + '/credits?api_key=22a304eaf99b49c9b1427583f1654aba&languages=en-US'); //les acteur
         let UpBandad = ajaxGet('https://api.themoviedb.org/3/movie/' + id + '/videos?api_key=22a304eaf99b49c9b1427583f1654aba&language=en-US'); //band annoce
@@ -150,7 +149,7 @@ function myFunction(id) {
         trailer.style = "text-align: center"
         trailer.innerHTML = '<iframe id="video" width="560" height="315" src="https://www.youtube.com/embed/' + bandad[0].key + '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
         para.append(trailer);
-        span.onclick = function () {
+        span.onclick = function() {
             modal.classList.toggle("show");
             modal.style.zIndex = "-1";
             trailer.innerHTML = "";
@@ -158,30 +157,32 @@ function myFunction(id) {
         }
         return false;
 
-        
+
     }
 }
-function search(){
-    let Upsearch = ajaxGet('https://api.themoviedb.org/3/search/movie?api_key=22a304eaf99b49c9b1427583f1654aba&language=fr-fr&query="  "&page=1&include_adult=false');
-}
+// function search(){
+//     let searchField = document.getElementById('search-field').value;
+//     let Upsearch = ajaxGet('https://api.themoviedb.org/3/search/movie?api_key=22a304eaf99b49c9b1427583f1654aba&language=fr-fr&query="'+searchField+'"&page=1');
+//     console.log(searchField);
+// }
 
 
 //météo
-var callBackGetSuccess = function (data) {
+var callBackGetSuccess = function(data) {
     console.log("donnees api", data)
     var element = document.getElementById('meteo');
-    element.innerHTML = "In Paris the temperature is " + data.main.temp + "°K in Paris<br> a wind of " + data.wind.speed + " km/h";
+    element.innerHTML = "In Paris the temperature is " + data.main.temp + "°K <br> and wind of " + data.wind.speed + " km/h";
 }
 
 function buttonClickGET() {
     let url = "http://api.openweathermap.org/data/2.5/weather?q=Paris&appid=44c83eccb126388f53495b2fa7e02165";
 
-    $.get(url, callBackGetSuccess).done(function () {
+    $.get(url, callBackGetSuccess).done(function() {
 
-        }).fail(function () {
+        }).fail(function() {
             alert("error");
         })
-        .always(function () {
+        .always(function() {
 
         });
 }

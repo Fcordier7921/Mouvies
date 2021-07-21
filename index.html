@@ -15,41 +15,37 @@
     <!-- START PAGE SOURCE -->
     <div id="shell">
         <div id="header">
-            <h1 id="logo"><a href="#">MovieHunter</a></h1>
-            <div class="social"> <span>FOLLOW US ON:</span>
-                <ul>
-                    <li><a class="twitter" href="#">twitter</a></li>
-                    <li><a class="facebook" href="#">facebook</a></li>
-                    <li><a class="vimeo" href="#">vimeo</a></li>
-                    <li><a class="rss" href="#">rss</a></li>
-                </ul>
-            </div>
-
-            <div id="navigation">
-                <ul>
-                    <li><a class="active" href="#">HOME</a></li>
-                    <li><a href="#">NEWS</a></li>
-                    <li><a href="#">IN THEATERS</a></li>
-                    <li><a href="#">COMING SOON</a></li>
-                    <li><a href="#">CONTACT</a></li>
-                    <li><a href="#">ADVERTISE</a></li>
-                </ul>
-            </div>
-            <div id="sub-navigation" class="">
-                <ul>
-                    <li><a href="#" onclick="buttonClickFilmGET()">SHOW ALL</a></li>
-                    <li><a href="#" onclick="buttonClickFilmLastGET()">LATEST TRAILERS</a></li>
-                    <li><a href="#" onclick="buttonClickFilmTopGET()">TOP RATED</a></li>
-                    <li><a href="#" onclick="buttonClickFilmMostGET()">MOST COMMENTED</a></li>
-                </ul>
-                <div id="search">
-                    <form action="#" method="get" accept-charset="utf-8">
-                        <label for="search-field">SEARCH</label>
-                        <input type="text" name="search field" value="Enter search here" id="search-field" class="blink search-field" />
-                        <input type="submit" value="GO!" class="search-button" />
-                    </form>
+            <nav class="navbar">
+                <h1 id="logo nav-logo">
+                    <a href="#"><img src="css/images/logo.gif" alt=""></a>
+                </h1>
+                <div class="social"> <span>FOLLOW US ON:</span>
+                    <ul>
+                        <li><a class="twitter" href="#">twitter</a></li>
+                        <li><a class="facebook" href="#">facebook</a></li>
+                        <li><a class="vimeo" href="#">vimeo</a></li>
+                        <li><a class="rss" href="#">rss</a></li>
+                    </ul>
                 </div>
-            </div>
+
+
+                <div id="navigation">
+                    <ul class="nav-menu">
+                        <li class="nav-item"><a class="active nav-link" href="#">HOME</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">NEWS</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">IN THEATERS</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">COMING SOON</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">CONTACT</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">ADVERTISE</a></li>
+                    </ul>
+                </div>
+
+
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
         </div>
         <div id="main">
             <div id="content">
